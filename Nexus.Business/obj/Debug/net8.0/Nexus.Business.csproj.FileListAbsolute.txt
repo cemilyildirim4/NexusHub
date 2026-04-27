@@ -1,0 +1,17 @@
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\Nexus.Business.csproj.AssemblyReference.cache
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\Nexus.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\Nexus.Business.AssemblyInfoInputs.cache
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\Nexus.Business.AssemblyInfo.cs
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\Nexus.Business.csproj.CoreCompileInputs.cache
+C:\NexusHub\Nexus.Business\bin\Debug\net8.0\Nexus.Business.deps.json
+C:\NexusHub\Nexus.Business\bin\Debug\net8.0\Nexus.Business.dll
+C:\NexusHub\Nexus.Business\bin\Debug\net8.0\Nexus.Business.pdb
+C:\NexusHub\Nexus.Business\bin\Debug\net8.0\Nexus.Core.dll
+C:\NexusHub\Nexus.Business\bin\Debug\net8.0\Nexus.Data.dll
+C:\NexusHub\Nexus.Business\bin\Debug\net8.0\Nexus.Core.pdb
+C:\NexusHub\Nexus.Business\bin\Debug\net8.0\Nexus.Data.pdb
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\Nexus.Bu.9EE95338.Up2Date
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\Nexus.Business.dll
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\refint\Nexus.Business.dll
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\Nexus.Business.pdb
+C:\NexusHub\Nexus.Business\obj\Debug\net8.0\ref\Nexus.Business.dll
