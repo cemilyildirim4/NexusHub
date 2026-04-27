@@ -69,26 +69,7 @@ To provide a scalable and maintainable platform for efficiently monitoring and m
 
 ---
 
-## 📷 (Optional) Screenshots / Demo
 
-> You can add UI screenshots or API examples here later.
-
----
-
-## 📦 Setup (Optional - ekleyebilirsin)
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/NexusHub.git
-
-# Navigate to project
-cd NexusHub
-
-# Run with Docker
-docker-compose up -d
-```
-
----
 
 ## 👤 Author
 
