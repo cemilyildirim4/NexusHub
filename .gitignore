@@ -1,5 +1,7 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/NexusHub.slnx
+﻿# .NET Core
+bin/
+obj/
+.vs/
+*.user
+*.userosscache
+*.sln.docstates

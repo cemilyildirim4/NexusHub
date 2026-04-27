@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Nexus.Api/Nexus.Api.csproj" Id="48bcb1a3-072d-4079-ac69-b8725ffee8f6" />
+  <Project Path="Nexus.Business/Nexus.Business.csproj" Id="a3872d42-8c4e-40ca-b85b-ff4765bae8ad" />
+  <Project Path="Nexus.Core/Nexus.Core.csproj" />
+  <Project Path="Nexus.Data/Nexus.Data.csproj" Id="762667d2-bcef-48e2-a53a-3953a018a7dd" />
+</Solution>
