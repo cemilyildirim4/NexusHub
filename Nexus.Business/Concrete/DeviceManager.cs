@@ -25,14 +25,50 @@ namespace Nexus.Business.Concrete
                 await context.SaveChangesAsync();
             }
         }
-        public DeviceStatus CheckDeviceHealth(Device device)
+        public DeviceStatus CheckDeviceHealth(Device device)    
         {
             var timeDifference = DateTime.UtcNow - device.LastSeen;
-
+            
             if (!device.IsOnline) return DeviceStatus.Critical; 
             if (timeDifference.TotalMinutes > 30) return DeviceStatus.Warning;
 
             return DeviceStatus.Healthy;
+        }
+
+        public async Task<Device?> GetDeviceByIdAsync(int id)
+        {
+            var device = await context.Devices.FindAsync(id);
+            if(device != null)
+            {
+                device.Status = CheckDeviceHealth(device);
+            }
+            return device;  
+        }
+
+        public async Task UpdateDeviceAsync(Device device)
+        {
+            // Veritabanındaki mevcut kaydı buluyoruz
+            var existingDevice = await context.Devices.FindAsync(device.Id);
+            if(existingDevice != null)
+            {
+                // Alanları güncelleme
+                existingDevice.Name = device.Name;
+                existingDevice.IPAddress = device.IPAddress;
+                existingDevice.IsOnline = device.IsOnline;
+                existingDevice.LastSeen = device.LastSeen;
+
+                await context.SaveChangesAsync();
+            }
+        }
+        
+        public async Task DeleteDeviceAsync(int id)
+        {
+            var device = await context.Devices.FindAsync(id);
+            if(device != null)
+            {
+                context.Devices.Remove(device);
+                await context.SaveChangesAsync();
+            }
         }
     }
 }

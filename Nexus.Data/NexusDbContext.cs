@@ -9,7 +9,7 @@ using Nexus.Core.Entities;
 
 namespace Nexus.Data
 {
-    public class NexusDbContext : DbContext
+    public class    NexusDbContext : DbContext
     {
         public NexusDbContext(DbContextOptions<NexusDbContext> options) : base(options)
         {

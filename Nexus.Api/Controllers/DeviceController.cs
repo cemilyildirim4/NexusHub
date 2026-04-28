@@ -12,7 +12,11 @@ namespace Nexus.Api.Controllers
     [ApiController]
     public class DeviceController(IDeviceService deviceService ) : ControllerBase
     {
-        [HttpGet]
+        /// <summary>
+        /// Sistemde kayıtlı olan tüm cihazları sağlık durumlarıyla birlikte listeler.
+        /// </summary>
+        /// <returns>Cihaz listesini ve HTTP 200 kodunu döner.</returns>
+        [HttpGet]   
         public async Task<ActionResult> Get() => Ok(await deviceService.GetAllDevicesAsync());
 
         [HttpPost]
@@ -21,6 +25,30 @@ namespace Nexus.Api.Controllers
             await deviceService.AddDeviceAsync(device);
             var healthStatus = deviceService.CheckDeviceHealth(device);
             return Ok(new { Device = device, Status = healthStatus });
+        }
+        // Belirli bir ID'ye göre cihaz getir: GET /api/devices/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var device = await deviceService.GetDeviceByIdAsync(id);
+            if (device == null) return NotFound();
+            return Ok(device);
+        }
+
+        //Cihaz güncelle: PUT /api/devices/5
+        [HttpPut]
+        public async Task<IActionResult> Put(Device device)
+        {
+            await deviceService.UpdateDeviceAsync(device);
+            return NoContent(); //başarılı güncelleme sonrası genellikle NoContent döneriz
+        }
+
+        //Cihaz sil:DELETE /api/devices/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await deviceService.DeleteDeviceAsync(id);
+            return Ok(); // Silme işlemi başarılıysa genellikle Ok veya NoContent döneriz   
         }
     }
 }
