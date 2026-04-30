@@ -19,11 +19,12 @@ namespace Nexus.Business.Concrete
         }
         public async Task AddDeviceAsync(Device device)
         {
-            if (!string.IsNullOrEmpty(device.IPAddress))
+            if (string.IsNullOrEmpty(device.IPAddress))
             {
-                await context.Devices.AddAsync(device);
-                await context.SaveChangesAsync();
+                throw new ArgumentException("IPAddress cannot be null or empty.");
             }
+            await context.Devices.AddAsync(device);
+            await context.SaveChangesAsync();
         }
         public DeviceStatus CheckDeviceHealth(Device device)    
         {
@@ -45,30 +46,34 @@ namespace Nexus.Business.Concrete
             return device;  
         }
 
-        public async Task UpdateDeviceAsync(Device device)
+        public async Task<bool> UpdateDeviceAsync(Device device)
         {
-            // Veritabanındaki mevcut kaydı buluyoruz
             var existingDevice = await context.Devices.FindAsync(device.Id);
-            if(existingDevice != null)
+            if (existingDevice == null)
             {
-                // Alanları güncelleme
-                existingDevice.Name = device.Name;
-                existingDevice.IPAddress = device.IPAddress;
-                existingDevice.IsOnline = device.IsOnline;
-                existingDevice.LastSeen = device.LastSeen;
-
-                await context.SaveChangesAsync();
+                return false;
             }
+
+            existingDevice.Name = device.Name;
+            existingDevice.IPAddress = device.IPAddress;
+            existingDevice.IsOnline = device.IsOnline;
+            existingDevice.LastSeen = device.LastSeen;
+
+            await context.SaveChangesAsync();
+            return true;
         }
         
-        public async Task DeleteDeviceAsync(int id)
+        public async Task<bool> DeleteDeviceAsync(int id)
         {
             var device = await context.Devices.FindAsync(id);
-            if(device != null)
+            if (device == null)
             {
-                context.Devices.Remove(device);
-                await context.SaveChangesAsync();
+                return false;
             }
+
+            context.Devices.Remove(device);
+            await context.SaveChangesAsync();
+            return true;
         }
     }
 }

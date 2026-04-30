@@ -39,16 +39,18 @@ namespace Nexus.Api.Controllers
         [HttpPut]
         public async Task<IActionResult> Put(Device device)
         {
-            await deviceService.UpdateDeviceAsync(device);
-            return NoContent(); //başarılı güncelleme sonrası genellikle NoContent döneriz
+            var updated = await deviceService.UpdateDeviceAsync(device);
+            if (!updated) return NotFound();
+            return Ok(new { message = "Device updated successfully." });
         }
 
         //Cihaz sil:DELETE /api/devices/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await deviceService.DeleteDeviceAsync(id);
-            return Ok(); // Silme işlemi başarılıysa genellikle Ok veya NoContent döneriz   
+            var deleted = await deviceService.DeleteDeviceAsync(id);
+            if (!deleted) return NotFound();
+            return Ok(new { message = "Device deleted successfully." });
         }
     }
 }

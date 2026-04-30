@@ -36,10 +36,10 @@ async function addDevice() {
   }
 
   const newDevice = {
-    Name: nameInput.value,
-    IpAddress: ipInput.value,
-    Status: "Checking...", 
-    LastSeen: new Date().toISOString(),
+    name: nameInput.value,
+    ipAddress: ipInput.value,
+    status: 0, 
+    lastSeen: new Date().toISOString(),
   };
 
   try {
